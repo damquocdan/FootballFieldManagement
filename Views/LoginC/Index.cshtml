@@ -21,57 +21,66 @@
 
 <style>
     body {
-        background-color: #ffe2de; /* Soft pink background */
+        background-color: #e9f7df; /* Light green background for football field theme */
         font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
     .login-box {
         width: 400px;
         margin: auto;
         margin-top: 100px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         padding: 30px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         border-radius: 12px;
         background-color: #fff;
         text-align: center;
-        border: 1px solid #f04236; /* Soft red border for a bakery feel */
+        border: 2px solid #2d6a4f; /* Dark green for a football field feel */
+        background-image: url('~/images/football-field.jpg'); /* Football field background */
+        background-size: cover;
+        background-position: center;
     }
 
     .login-title {
         font-weight: 700;
-        font-size: 28px;
-        color: #f04236;
+        font-size: 32px;
+        color: #2d6a4f;
         margin-bottom: 20px;
-        font-family: 'Cursive', sans-serif; /* Add a playful font style */
+        font-family: 'Cursive', sans-serif;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for a sporty look */
     }
 
     .custom-input {
         border-radius: 8px;
-        margin-top: 10px;
+        margin-top: 15px;
         height: 45px;
         padding-left: 15px;
         font-size: 16px;
+        border: 2px solid #2d6a4f;
+        box-shadow: 0 0 5px rgba(45, 106, 79, 0.3);
     }
 
         .custom-input:focus {
-            border-color: #f04236;
-            box-shadow: 0 0 5px rgba(240, 66, 54, 0.5);
+            border-color: #f4a261;
+            box-shadow: 0 0 5px rgba(244, 162, 97, 0.6);
         }
 
     .btn-primary {
         width: 100%;
         border-radius: 8px;
-        background-color: #f04236;
+        background-color: #2d6a4f;
         border: none;
         padding: 12px;
         color: white;
         font-size: 18px;
         font-weight: bold;
         margin-top: 20px;
+        transition: background-color 0.3s;
     }
 
         .btn-primary:hover {
-            background-color: #e03a2d;
+            background-color: #1f4f38;
         }
 
     .alert {
@@ -87,6 +96,11 @@
         .alert li {
             margin-bottom: 5px;
         }
+
+    /* Adjust form input for a cleaner look */
+    .form-control-lg {
+        font-size: 16px;
+    }
 </style>
 
 <div class="login-box">

@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,49 +21,164 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FootballFieldManagement.styles.css" asp-append-version="true" />
+    <style>
+        /* Apply main background color */
+        body {
+            background-color: #e9f7df; /* Football field green */
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        /* Header and text styles */
+        h1 {
+            color: #000;
+            font-size: 2.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        p.text-secondary {
+            color: #b6b6b6;
+            font-style: italic;
+        }
+
+        /* Card styles */
+        .card {
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            border-top: 1px solid #ffffff;
+        }
+
+        .card-title {
+            color: #2C6B2F; /* Dark green color */
+            font-weight: bold;
+        }
+
+        .card-text {
+            color: #333333;
+        }
+
+        /* Button styles */
+        .btn-outline-primary {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+            .btn-outline-primary:hover {
+                background-color: #ffffff;
+                color: #4CAF50; /* Green for button hover */
+            }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+            .btn-primary:hover {
+                background-color: #388E3C; /* Darker green */
+                border-color: #388E3C;
+            }
+
+        .btn-sm {
+            font-size: 0.875rem;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2C6B2F; /* Dark green */
+            color: white;
+        }
+
+        /* Football Field Background in header */
+        .navbar {
+            background-color: #3E8E41;
+        }
+
+        /* Custom logo styles */
+        .navbar-brand img {
+            height: 50px; /* Adjust logo size */
+            margin-right: 15px;
+        }
+
+        /* Alert Styles */
+        .alert-success {
+            background-color: #388E3C; /* Green success alert */
+            color: white;
+        }
+
+        .alert-danger {
+            background-color: #D32F2F; /* Red for error alerts */
+            color: white;
+        }
+
+        /* Football icon styles (example for any football images/icons) */
+        .football-icon {
+            width: 50px;
+            height: 50px;
+            background-image: url('https://example.com/football-icon.png');
+            background-size: cover;
+        }
+
+        /* Footer styling (Football theme) */
+        footer {
+            background-color: #2C6B2F; /* Dark Green Footer */
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FootballFieldManagement</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index" style="color:#ffffff; font-size:30px">
+                    <img src="~/images/logo.png" alt="Football Logo" style="height: 120px; margin-right: 10px;">
+                    Sân bóng Ngọc Mai
+                </a>
+
+                <!-- Toggle Button for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <!-- Navigation Menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Fields" asp-action="Index">Danh sách các sân bóng</a>
                         </li>
-                        @* Kiểm tra nếu đã đăng nhập *@
+
+                        @* Check if the user is logged in *@
                         @if (Context.Session.GetString("CustomerLogin") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Đơn Bánh</a>
-                            </li>
-                            <!-- Hiển thị Giỏ hàng và Đăng xuất khi đã đăng nhập -->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Giỏ hàng</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Bookings" asp-action="Index" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Sân đã đặt</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customers" asp-action="Details" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Thông tin cá nhân</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="@Url.Action("Logout", "LoginC")">Đăng xuất</a>
+                                <a class="nav-link text-white" href="@Url.Action("Logout", "LoginC")">Đăng xuất</a>
                             </li>
                         }
                         else
                         {
-                            <!-- Hiển thị Đăng nhập và Đăng ký khi chưa đăng nhập -->
+                            <!-- Login and Register Links when not logged in -->
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="LoginC" asp-action="Index">Đăng nhập</a>
+                                <a class="nav-link text-white" asp-controller="LoginC" asp-action="Index">Đăng nhập</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Đăng ký</a>
                             </li>
                         }
                     </ul>
@@ -62,12 +191,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - FootballFieldManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

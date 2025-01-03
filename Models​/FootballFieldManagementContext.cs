@@ -76,12 +76,10 @@ public partial class FootballFieldManagementContext : DbContext
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Bookings__custom__3D5E1FD2");
 
             entity.HasOne(d => d.Field).WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.FieldId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Bookings__field___3E52440B");
         });
 
@@ -103,12 +101,10 @@ public partial class FootballFieldManagementContext : DbContext
 
             entity.HasOne(d => d.Booking).WithMany(p => p.BookingServices)
                 .HasForeignKey(d => d.BookingId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Booking_S__booki__440B1D61");
 
             entity.HasOne(d => d.Service).WithMany(p => p.BookingServices)
                 .HasForeignKey(d => d.ServiceId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Booking_S__servi__44FF419A");
         });
 

@@ -1,5 +1,6 @@
-using FootballFieldManagement.Models;
+﻿using FootballFieldManagement.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace FootballFieldManagement.Controllers
@@ -7,15 +8,18 @@ namespace FootballFieldManagement.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly FootballFieldManagementContext _context;
+        public HomeController(ILogger<HomeController> logger, FootballFieldManagementContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            // Lấy danh sách sân bóng từ cơ sở dữ liệu
+            var fields = _context.Fields.ToList();
+            return View(fields);
         }
 
         public IActionResult Privacy()
