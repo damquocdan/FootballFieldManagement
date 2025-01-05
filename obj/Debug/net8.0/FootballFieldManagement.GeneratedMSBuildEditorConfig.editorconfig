@@ -202,22 +202,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/FootballFieldManagement/Views/Fields/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DATN/FootballFieldManagement/Views/Fields/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DATN/FootballFieldManagement/Views/Fields/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DATN/FootballFieldManagement/Views/Fields/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/DATN/FootballFieldManagement/Views/Fields/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
