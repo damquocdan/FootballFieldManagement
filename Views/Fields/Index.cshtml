@@ -4,45 +4,251 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #f9f9f9;
+    }
 
-<h1>Index</h1>
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FieldName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capacity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FieldName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FieldId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FieldId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FieldId">Delete</a>
-            </td>
-        </tr>
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+    .field-image {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .schedule-image {
+        width: 120px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .weekly-schedule {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 14px;
+        border: none;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-success:hover {
+            background-color: #45a049;
+            color: white;
+        }
+
+    .weekly-calendar {
+        margin: 20px auto;
+        max-width: 1000px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .weekly-calendar h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .calendar-table th,
+        .calendar-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .calendar-table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-table td {
+            background-color: #fff;
+            color: black;
+            transition: background-color 0.3s;
+        }
+
+            .calendar-table td:hover {
+                background-color: #f1f1f1;
+            }
+
+            .calendar-table td.booked {
+                background-color: #ff9999;
+                color: white;
+                font-weight: bold;
+            }
+
+            .calendar-table td.available {
+                background-color: #99ff99;
+                color: #333;
+            }
+
+</style>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+@foreach (var item in Model)
+{
+    <div class="weekly-calendar">
+        <h2>Lịch trong tuần sân @Html.DisplayFor(modelItem => item.FieldName)</h2>
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th id="monday-@item.FieldId">Thứ hai</th>
+                    <th id="tuesday-@item.FieldId">Thứ ba</th>
+                    <th id="wednesday-@item.FieldId">Thứ tư</th>
+                    <th id="thursday-@item.FieldId">Thứ năm</th>
+                    <th id="friday-@item.FieldId">Thứ sáu</th>
+                    <th id="saturday-@item.FieldId">Thứ bảy</th>
+                    <th id="sunday-@item.FieldId">Chủ nhật</th>
+                </tr>
+            </thead>
+            <tbody id="schedule-body-@item.FieldId">
+                <!-- Rows will be dynamically populated by JavaScript -->
+            </tbody>
+            <a asp-action="Create" asp-controller="Bookings" asp-route-fieldId="@item.FieldId" asp-route-customerId="@Context.Session.GetInt32("CustomerId")" class="btn btn-success">
+                Đặt Sân
+            </a>
+        </table>
+    </div>
 }
-    </tbody>
-</table>
+<script>
+    function getWeekDates() {
+        const today = new Date();
+        const firstDayOfWeek = new Date(today.setDate(today.getDate() - ((today.getDay() + 6) % 7))); // Monday
+        const weekDates = [];
+
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(firstDayOfWeek);
+            date.setDate(firstDayOfWeek.getDate() + i);
+            weekDates.push(date);
+        }
+
+        return weekDates;
+    }
+
+    function displayWeekDates(fieldId) {
+        const weekDates = getWeekDates();
+        const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+
+        weekDates.forEach((date, index) => {
+            const dayHeader = document.getElementById(`${days[index]}-${fieldId}`);
+            dayHeader.innerHTML = `
+                            <span class="day-name">${days[index].charAt(0).toUpperCase() + days[index].slice(1)}</span>
+                            <br>
+                            <span class="date">${date.toLocaleDateString("vi-VN")}</span>
+                        `;
+        });
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    }
+
+    function populateSchedule(fieldId) {
+        const scheduleBody = document.getElementById(`schedule-body-${fieldId}`);
+        const times = [
+            "8:00 AM - 10:00 AM",
+            "10:00 AM - 12:00 PM",
+            "1:00 PM - 3:00 PM",
+            "3:00 PM - 5:00 PM",
+            "6:00 PM - 8:00 PM"
+        ];
+
+        times.forEach((time, rowIndex) => {
+            const row = document.createElement("tr");
+
+            const timeCell = document.createElement("td");
+            timeCell.innerText = time;
+            timeCell.classList.add("time-slot");
+            row.appendChild(timeCell);
+
+            for (let colIndex = 0; colIndex < 7; colIndex++) {
+                const cell = document.createElement("td");
+                const cellId = `cell-${fieldId}-${rowIndex}-${colIndex}`;
+                const savedState = getCookie(cellId);
+
+                if (savedState === "booked") {
+                    cell.innerText = "Đã đặt";
+                    cell.classList.add("booked");
+                } else {
+                    cell.innerText = "Còn trống";
+                    cell.classList.add("available");
+                }
+
+                cell.addEventListener("click", () => {
+                    if (cell.classList.contains("available")) {
+                        cell.classList.remove("available");
+                        cell.classList.add("booked");
+                        cell.innerText = "Đã đặt";
+                        setCookie(cellId, "booked", 7);
+                    } else {
+                        cell.classList.remove("booked");
+                        cell.classList.add("available");
+                        cell.innerText = "Còn trống";
+                        setCookie(cellId, "available", 7);
+                    }
+                });
+
+                row.appendChild(cell);
+            }
+
+            scheduleBody.appendChild(row);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const fieldIds = @Html.Raw(Json.Serialize(Model.Select(m => m.FieldId))); // Get all FieldIds from the model
+        fieldIds.forEach(fieldId => {
+            displayWeekDates(fieldId);
+            populateSchedule(fieldId);
+        });
+    });
+</script>

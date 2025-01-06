@@ -1,15 +1,77 @@
 ﻿@model IEnumerable<FootballFieldManagement.Models.Booking>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách Đặt sân";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #2f8e2b;
+            color: white;
+            font-weight: bold;
+        }
+
+        .table td {
+            background-color: #ffffff;
+        }
+
+    .btn {
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+
+    .btn-edit {
+        background-color: #f39c12;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #2980b9;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+</style>
+
+<h1>Danh sách Đặt sân</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Tạo mới</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -34,39 +96,40 @@
             <th>
                 @Html.DisplayNameFor(model => model.Field)
             </th>
-            <th></th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalServicePrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Field.FieldId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalServicePrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Field.FieldName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookingId" class="btn btn-edit">Chỉnh sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.BookingId" class="btn btn-details">Chi tiết</a> 
+                    <a asp-action="Delete" asp-route-id="@item.BookingId" class="btn btn-delete">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

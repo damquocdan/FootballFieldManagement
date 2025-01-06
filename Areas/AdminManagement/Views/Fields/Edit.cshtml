@@ -1,13 +1,57 @@
 ﻿@model FootballFieldManagement.Models.Field
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh Sửa";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Edit</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
 
-<h4>Field</h4>
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+        .form-group input:focus {
+            border-color: #2f8e2b;
+        }
+
+    .btn {
+        background-color: #2f8e2b; /* Màu xanh lá cây cho nút */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+        .btn:hover {
+            background-color: #228c22;
+        }
+
+    .text-danger {
+        color: #d9534f; /* Màu đỏ cho thông báo lỗi */
+    }
+</style>
+
+<h1>Chỉnh Sửa</h1>
+
+<h4>Sân Bóng</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,31 +59,33 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="FieldId" />
             <div class="form-group">
-                <label asp-for="FieldName" class="control-label"></label>
+                <label asp-for="FieldName" class="control-label">Tên Sân Bóng</label>
                 <input asp-for="FieldName" class="form-control" />
                 <span asp-validation-for="FieldName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Capacity" class="control-label"></label>
+                <label asp-for="Capacity" class="control-label">Sức Chứa</label>
                 <input asp-for="Capacity" class="form-control" />
                 <span asp-validation-for="Capacity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">Giá</label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn">Quay Lại Danh Sách</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

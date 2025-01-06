@@ -1,62 +1,132 @@
 ﻿@model FootballFieldManagement.Models.Booking
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo Mới Đặt Sân";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Create</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
 
-<h4>Booking</h4>
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        color: #2f8e2b;
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #2f8e2b;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .btn-primary {
+        background-color: #2f8e2b;
+        color: white;
+        border-color: #2f8e2b;
+    }
+
+        .btn-primary:hover {
+            background-color: #267a22;
+            border-color: #1e5d1b;
+        }
+
+    .text-danger {
+        color: #d9534f; /* Màu đỏ cho lỗi */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-back {
+        background-color: #f39c12;
+        color: white;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 3px;
+    }
+
+        .btn-back:hover {
+            opacity: 0.8;
+        }
+
+    .row {
+        margin-top: 20px;
+    }
+
+    hr {
+        border-top: 1px solid #2f8e2b;
+    }
+</style>
+
+<h1>Tạo Mới Đặt Sân</h1>
+
+<h4>Thông tin Đặt sân</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6 offset-md-3">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+                <label asp-for="CustomerId" class="control-label">Khách hàng</label>
+                <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="FieldId" class="control-label"></label>
-                <select asp-for="FieldId" class ="form-control" asp-items="ViewBag.FieldId"></select>
+                <label asp-for="FieldId" class="control-label">Sân bóng</label>
+                <select asp-for="FieldId" class="form-control" asp-items="ViewBag.FieldId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="BookingTime" class="control-label"></label>
+                <label asp-for="BookingTime" class="control-label">Thời gian đặt</label>
                 <input asp-for="BookingTime" class="form-control" />
                 <span asp-validation-for="BookingTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
+                <label asp-for="Duration" class="control-label">Thời gian thuê (giờ)</label>
                 <input asp-for="Duration" class="form-control" />
                 <span asp-validation-for="Duration" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalPrice" class="control-label"></label>
+                <label asp-for="TotalPrice" class="control-label">Giá trị tổng</label>
                 <input asp-for="TotalPrice" class="form-control" />
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalServicePrice" class="control-label"></label>
+                <label asp-for="TotalServicePrice" class="control-label">Giá trị dịch vụ</label>
                 <input asp-for="TotalServicePrice" class="form-control" />
                 <span asp-validation-for="TotalServicePrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalAmount" class="control-label"></label>
+                <label asp-for="TotalAmount" class="control-label">Tổng tiền</label>
                 <input asp-for="TotalAmount" class="form-control" />
                 <span asp-validation-for="TotalAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Tạo Mới" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-back">Quay lại danh sách</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

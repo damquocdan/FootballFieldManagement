@@ -49,8 +49,8 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
         // GET: AdminManagement/Bookings/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
-            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldId");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "Username");
+            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldName");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", booking.CustomerId);
-            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldId", booking.FieldId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "Username", booking.CustomerId);
+            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldName", booking.FieldId);
             return View(booking);
         }
 
@@ -85,8 +85,8 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", booking.CustomerId);
-            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldId", booking.FieldId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "Username", booking.CustomerId);
+            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldName", booking.FieldId);
             return View(booking);
         }
 
@@ -122,8 +122,8 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", booking.CustomerId);
-            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldId", booking.FieldId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "UserName", booking.CustomerId);
+            ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldName", booking.FieldId);
             return View(booking);
         }
 

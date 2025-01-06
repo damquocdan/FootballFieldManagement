@@ -1,54 +1,100 @@
 ﻿@model IEnumerable<FootballFieldManagement.Models.BookingService>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh Sách Dịch Vụ Đặt Sân";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        color: #2f8e2b;
+        font-size: 1.2rem;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #2f8e2b;
+            color: white;
+        }
+
+        .table td {
+            background-color: #f9f9f9;
+        }
+
+        .table a {
+            color: #2f8e2b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .table a:hover {
+                text-decoration: underline;
+            }
+
+    .btn-create {
+        background-color: #2f8e2b;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #267a22;
+        }
+</style>
+
+<h1>Danh Sách Dịch Vụ Đặt Sân</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn-create">Tạo Mới Dịch Vụ</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Service)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+            <th>@Html.DisplayNameFor(model => model.TotalPrice)</th>
+            <th>@Html.DisplayNameFor(model => model.Booking)</th>
+            <th>@Html.DisplayNameFor(model => model.Service)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Booking.BookingId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.ServiceId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingServiceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingServiceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingServiceId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+                <td>@item.Booking.BookingId - @item.Booking.Customer.Username</td>
+                <td>@Html.DisplayFor(modelItem => item.Service.ServiceName)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookingServiceId">Chỉnh Sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.BookingServiceId">Chi Tiết</a> 
+                    <a asp-action="Delete" asp-route-id="@item.BookingServiceId">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

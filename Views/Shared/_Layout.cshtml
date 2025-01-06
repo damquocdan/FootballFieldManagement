@@ -168,6 +168,9 @@
                                 <a class="nav-link text-white" asp-area="" asp-controller="Bookings" asp-action="Index" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Sân đã đặt</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Customers" asp-action="Details" asp-route-customerId="@Context.Session.GetInt32("CustomerId")">Thông tin cá nhân</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white" href="@Url.Action("Logout", "LoginC")">Đăng xuất</a>
                             </li>
                         }
@@ -178,7 +181,7 @@
                                 <a class="nav-link text-white" asp-controller="LoginC" asp-action="Index">Đăng nhập</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Customers" asp-action="Create">Đăng ký</a>
                             </li>
                         }
                     </ul>

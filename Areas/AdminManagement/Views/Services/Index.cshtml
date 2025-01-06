@@ -1,15 +1,73 @@
 ﻿@model IEnumerable<FootballFieldManagement.Models.Service>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh Sách Dịch Vụ";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .create-link {
+        background-color: #2f8e2b; /* Màu xanh lá cây cho nút */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+        .create-link:hover {
+            background-color: #228c22;
+        }
+
+    .table {
+        background-color: white;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #2f8e2b; /* Màu xanh lá cây cho tiêu đề */
+            color: white;
+        }
+
+        .table td {
+            background-color: #ffffff;
+        }
+
+    .action-links a {
+        text-decoration: none;
+        color: #2f8e2b;
+        margin: 0 5px;
+    }
+
+        .action-links a:hover {
+            color: #228c22;
+        }
+</style>
+
+<h1>Danh Sách Dịch Vụ</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="create-link" asp-action="Create">Tạo Dịch Vụ Mới</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,23 +84,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServiceName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ServiceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ServiceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ServiceId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="action-links">
+                    <a asp-action="Edit" asp-route-id="@item.ServiceId">Sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.ServiceId">Chi Tiết</a> 
+                    <a asp-action="Delete" asp-route-id="@item.ServiceId">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

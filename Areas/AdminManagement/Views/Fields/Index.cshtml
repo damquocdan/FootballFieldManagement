@@ -1,15 +1,66 @@
 ﻿@model IEnumerable<FootballFieldManagement.Models.Field>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh Sách Sân Bóng";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #2f8e2b; /* Màu xanh lá cây */
+            color: white;
+        }
+
+        .table td {
+            background-color: white;
+        }
+
+    .btn {
+        background-color: #2f8e2b; /* Màu xanh lá cây cho nút */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+        .btn:hover {
+            background-color: #228c22;
+        }
+
+    .text-danger {
+        color: #d9534f; /* Màu đỏ cho thông báo lỗi */
+    }
+</style>
+
+<h1>Danh Sách Sân Bóng</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn">Tạo Mới</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,27 +73,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th></th>
+            <th>Hành Động</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FieldName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FieldId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FieldId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FieldId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FieldName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FieldId" class="btn">Chỉnh Sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.FieldId" class="btn">Chi Tiết</a> 
+                    <a asp-action="Delete" asp-route-id="@item.FieldId" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

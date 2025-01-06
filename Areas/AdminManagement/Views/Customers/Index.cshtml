@@ -1,15 +1,77 @@
 ﻿@model IEnumerable<FootballFieldManagement.Models.Customer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh Sách Khách Hàng";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        background-color: #2f8e2b; /* Màu xanh lá cây cho nút */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+        .btn:hover {
+            background-color: #228c22;
+        }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background-color: #2f8e2b;
+    }
+
+    th, td {
+        border: 1px solid #2f8e2b;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #2f8e2b;
+        color: white;
+        font-weight: bold;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        background-color: #2f8e2b;
+    }
+    .table a {
+        color: #2f8e2b;
+        text-decoration: none;
+    }
+
+        .table a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1>Danh Sách Khách Hàng</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn">Tạo Mới</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -32,29 +94,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomerId">Chỉnh Sửa</a> 
+                    <a asp-action="Details" asp-route-id="@item.CustomerId">Chi Tiết</a> 
+                    <a asp-action="Delete" asp-route-id="@item.CustomerId">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

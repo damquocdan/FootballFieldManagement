@@ -1,0 +1,152 @@
+﻿@model FootballFieldManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "Đăng Ký Tài Khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    <style >
+    /* Cấu trúc container */
+    .container {
+        max-width: 600px;
+        margin-top: 70px;
+    }
+
+    /* Căn giữa và làm đẹp form */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        font-size: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    }
+
+    /* Nút đăng ký */
+    .btn {
+        font-size: 16px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+
+    .btn-lg {
+        font-size: 18px;
+        padding: 15px 25px;
+    }
+
+    /* Nút quay lại */
+    .btn-secondary {
+        padding: 10px 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        color: #007bff;
+        font-size: 16px;
+        text-align: center;
+    }
+
+        .btn-secondary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    .control-label{
+        color: black;
+    }
+    /* Căn chỉnh label và input ra 2 bên */
+    .d-flex {
+        display: flex;
+        align-items: center;
+    }
+
+        .d-flex .w-40 {
+            width: 40%;
+            font-weight: bold;
+            
+        }
+
+        .d-flex .w-60 {
+            width: 60%;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Giảm độ sáng cho các trường read-only */
+    .form-control[readonly] {
+        background-color: #f0f0f0;
+        border-color: #d6d6d6;
+    }
+
+    /* Tùy chỉnh thông báo lỗi */
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+</style>
+</style>
+<h1 class="text-center mt-3">Đăng Ký Tài Khoản</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Tên đăng nhập -->
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label">Tên Đăng Nhập</label>
+                    <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" placeholder="Nhập địa chỉ email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Mật khẩu</label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label">Số Điện Thoại</label>
+                    <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <!-- Địa chỉ -->
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label">Địa Chỉ</label>
+                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <!-- Nút đăng ký -->
+                <div class="form-group text-center">
+                    <input type="submit" value="Đăng Ký" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Liên kết quay lại -->
+    <div class="text-center mt-4">
+        <a class="btn btn-secondary" onclick="window.history.back();">Quay lại</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

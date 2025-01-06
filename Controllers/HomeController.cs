@@ -17,10 +17,15 @@ namespace FootballFieldManagement.Controllers
 
         public IActionResult Index()
         {
-            // Lấy danh sách sân bóng từ cơ sở dữ liệu
-            var fields = _context.Fields.ToList();
+            // Lấy danh sách 4 sân bóng mới nhất từ cơ sở dữ liệu
+            var fields = _context.Fields
+                                 .OrderByDescending(f => f.FieldId) // Sắp xếp theo ngày tạo mới nhất
+                                 .Take(4) // Lấy 4 sân bóng mới nhất
+                                 .ToList();
+
             return View(fields);
         }
+
 
         public IActionResult Privacy()
         {

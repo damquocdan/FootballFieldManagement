@@ -1,71 +1,86 @@
 ﻿@model FootballFieldManagement.Models.Booking
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo Đặt Sân";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create Booking</h1>
+<h1 class="text-center">Đặt Sân Bóng</h1>
 
-<h4>Booking</h4>
-<hr />
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- Display Customer Info -->
-            <div class="form-group">
-                <label>Customer</label>
-                <input type="text" class="form-control" value="@ViewData["CustomerName"]" readonly />
-                <input type="hidden" asp-for="CustomerId" value="@ViewData["CustomerId"]" />
-            </div>
+                <!-- Thông tin khách hàng -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label for="CustomerName" class="w-40">Khách Hàng</label>
+                        <input type="text" class="form-control w-60" value="@ViewData["CustomerName"]" readonly />
+                    </div>
+                    <input type="hidden" asp-for="CustomerId" value="@ViewData["CustomerId"]" />
+                </div>
 
-            <!-- Display Field Info -->
-            <div class="form-group">
-                <label>Field</label>
-                <input type="text" class="form-control" value="@ViewData["FieldName"]" readonly />
-                <input type="hidden" asp-for="FieldId" value="@ViewData["FieldId"]" />
-            </div>
+                <!-- Thông tin sân -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label for="FieldName" class="w-40">Sân</label>
+                        <input type="text" class="form-control w-60" value="@ViewData["FieldName"]" readonly />
+                    </div>
+                    <input type="hidden" asp-for="FieldId" value="@ViewData["FieldId"]" />
+                </div>
 
-            <!-- Booking Time -->
-            <div class="form-group">
-                <label asp-for="BookingTime" class="control-label"></label>
-                <input asp-for="BookingTime" class="form-control" />
-                <span asp-validation-for="BookingTime" class="text-danger"></span>
-            </div>
+                <!-- Thời gian đặt sân -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label asp-for="BookingTime" class="w-40">Thời gian đặt sân</label>
+                        <input asp-for="BookingTime" class="form-control w-60" placeholder="Chọn thời gian" />
+                    </div>
+                    <span asp-validation-for="BookingTime" class="text-danger"></span>
+                </div>
 
-            <!-- Duration -->
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
+                <!-- Thời gian sử dụng -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label asp-for="Duration" class="w-40">Thời gian (giờ)</label>
+                        <input asp-for="Duration" class="form-control w-60" />
+                    </div>
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
 
-            <!-- Read-Only Calculated Fields -->
-            <div class="form-group">
-                <label>Total Price</label>
-                <input type="text" class="form-control" value="@ViewData["TotalPrice"]" asp-for="TotalPrice" readonly />
-            </div>
-            <div class="form-group">
-                <label>Total Service Price</label>
-                <input type="text" class="form-control" value="@ViewData["TotalServicePrice"]" asp-for="TotalServicePrice" readonly />
-            </div>
-            <div class="form-group">
-                <label>Total Amount</label>
-                <input type="text" class="form-control" value="@ViewData["TotalAmount"]" asp-for="TotalAmount" readonly />
-            </div>
+                <!-- Các trường tính toán không thay đổi -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label class="w-40">Tổng Giá</label>
+                        <input type="text" class="form-control w-60" value="@ViewData["TotalPrice"]" asp-for="TotalPrice" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label class="w-40">Tổng Giá Dịch Vụ</label>
+                        <input type="text" class="form-control w-60" value="@ViewData["TotalServicePrice"]" asp-for="TotalServicePrice" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label class="w-40">Tổng Số Tiền</label>
+                        <input type="text" class="form-control w-60" value="@ViewData["TotalAmount"]" asp-for="TotalAmount" readonly />
+                    </div>
+                </div>
 
-            <!-- Submit Button -->
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <!-- Nút submit -->
+                <div class="form-group text-center">
+                    <input type="submit" value="Đặt Sân" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <!-- Liên kết quay lại -->
+    <div class="text-center mt-4">
+        <a class="btn btn-secondary" onclick="window.history.back();">Quay lại Trang Chủ</a>
+    </div>
 </div>
 
 @section Scripts {
@@ -73,3 +88,84 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<style>
+    /* Cấu trúc container */
+    .container {
+        max-width: 800px;
+        margin-top: 30px;
+    }
+
+    /* Làm đẹp các form input */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        font-size: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    }
+
+    /* Nút Submit */
+    .btn {
+        font-size: 16px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+
+    .btn-lg {
+        font-size: 18px;
+        padding: 15px 25px;
+    }
+
+    /* Nút quay lại */
+    .btn-secondary {
+        padding: 10px 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        color: #007bff;
+        font-size: 16px;
+        text-align: center;
+    }
+
+        .btn-secondary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    /* Căn chỉnh label và input ra 2 bên */
+    .d-flex {
+        display: flex;
+        align-items: center;
+    }
+
+        .d-flex .w-40 {
+            width: 40%;
+            font-weight: bold;
+            color:black
+        }
+
+        .d-flex .w-60 {
+            width: 60%;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Giảm độ sáng cho các trường read-only */
+    .form-control[readonly] {
+        background-color: #f0f0f0;
+        border-color: #d6d6d6;
+    }
+
+    /* Tùy chỉnh thông báo lỗi */
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+</style>

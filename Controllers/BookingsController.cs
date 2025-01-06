@@ -47,6 +47,7 @@ namespace FootballFieldManagement.Controllers
 
         // GET: Bookings/Create
         // GET: Bookings/Create
+        // GET: Bookings/Create
         public IActionResult Create(int fieldId)
         {
             // Retrieve the customer ID from session
@@ -59,7 +60,6 @@ namespace FootballFieldManagement.Controllers
                 return RedirectToAction("Index", "LoginC"); // Redirect to login page
             }
 
-            // Retrieve field details for the provided field ID
             // Retrieve customer and field details
             var customer = _context.Customers.Find(customerId);
             var field = _context.Fields.Find(fieldId);
@@ -68,48 +68,45 @@ namespace FootballFieldManagement.Controllers
             {
                 return NotFound();
             }
-            int duration = 1;
-            // Calculate values for TotalPrice and TotalServicePrice
-            var totalPrice = field.Price * duration; // Assuming 'duration' is passed or predefined
-            var totalServicePrice = 0; // Replace with actual service price calculation if any
 
-            // Set ViewData values
+            // Set the duration to the default value or use a passed value if applicable
+            int duration = 2; // Default duration, can be adjusted
+            var totalPrice = field.Price * duration;
+            var totalServicePrice = 0; // Update if services are included
+
+            // Set ViewData values to pass data to the view
             ViewData["CustomerName"] = customer.Username;
             ViewData["FieldName"] = field.FieldName;
             ViewData["FieldId"] = fieldId;
             ViewData["CustomerId"] = customerId;
             ViewData["TotalPrice"] = totalPrice;
             ViewData["TotalServicePrice"] = totalServicePrice;
-
-            // Calculate TotalAmount as the sum of TotalPrice and TotalServicePrice
             ViewData["TotalAmount"] = totalPrice + totalServicePrice;
-
 
             return View();
         }
 
 
         // POST: Bookings/Create
-        // POST: Bookings/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FieldId,CustomerId,BookingTime,Duration")] Booking booking)
         {
-            // Kiểm tra xem sân có sẵn vào thời gian đã chọn hay không
+            // Check if the field is available for the selected time and duration
             var isFieldAvailable = !_context.Bookings
-    .Any(b => b.FieldId == booking.FieldId && b.BookingTime <= booking.BookingTime &&
-              b.BookingTime.AddHours(booking.Duration ?? 0) > booking.BookingTime);
-
+                .Any(b => b.FieldId == booking.FieldId &&
+                          b.BookingTime <= booking.BookingTime &&
+                          b.BookingTime.AddHours(b.Duration ?? 0) > booking.BookingTime);
 
             if (!isFieldAvailable)
             {
-                ModelState.AddModelError("", "The selected field is not available at the chosen time.");
+                ModelState.AddModelError("", "Sân đã được đặt vào thời gian này.");
 
-                // Lấy lại thông tin sân và khách hàng để hiển thị trên View nếu không có sẵn
+                // Reload field and customer details
                 var field = _context.Fields.Find(booking.FieldId);
                 var customer = _context.Customers.Find(booking.CustomerId);
 
-                // Truyền các giá trị cần thiết vào ViewData
+                // Pass necessary data back to ViewData
                 ViewData["FieldName"] = field?.FieldName ?? "Unknown Field";
                 ViewData["CustomerName"] = customer?.Username ?? "Unknown Customer";
                 ViewData["FieldId"] = booking.FieldId;
@@ -118,20 +115,38 @@ namespace FootballFieldManagement.Controllers
                 return View(booking);
             }
 
-            // Tính toán giá trị TotalPrice và TotalAmount
+            // Tính toán tổng chi phí đặt sân
             var fieldDetails = await _context.Fields.FindAsync(booking.FieldId);
-            booking.TotalPrice = fieldDetails.Price * booking.Duration;
-            booking.TotalServicePrice = 0; // Dịch vụ bổ sung (nếu có)
-            booking.TotalAmount = booking.TotalPrice + booking.TotalServicePrice;
+            if (fieldDetails != null)
+            {
+                // Tính TotalPrice từ giá sân và thời gian
+                booking.TotalPrice = fieldDetails.Price * booking.Duration;
+
+                // Tính TotalServicePrice nếu có dịch vụ liên quan
+                // Bạn có thể lấy thông tin dịch vụ từ một bảng khác như BookingService
+                var totalServicePrice = _context.BookingServices
+                    .Where(bs => bs.BookingId == booking.BookingId)  // Lọc các dịch vụ liên quan đến booking này
+                    .Sum(bs => bs.TotalPrice);  // Cộng tất cả giá dịch vụ
+
+                booking.TotalServicePrice = totalServicePrice;
+
+                // Tính TotalAmount (tổng giá trị của booking)
+                booking.TotalAmount = booking.TotalPrice + booking.TotalServicePrice;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Không tìm thấy thông tin sân.");
+                return View(booking);
+            }
 
             if (ModelState.IsValid)
             {
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Điều hướng về trang danh sách
+                return RedirectToAction(nameof(Index));
             }
 
-            // Nếu ModelState không hợp lệ, re-load thông tin sân và khách hàng
+            // Reload field and customer details for invalid ModelState
             var fieldDetail = _context.Fields.Find(booking.FieldId);
             var customerDetail = _context.Customers.Find(booking.CustomerId);
 
@@ -140,9 +155,29 @@ namespace FootballFieldManagement.Controllers
             ViewData["FieldId"] = booking.FieldId;
             ViewData["CustomerId"] = booking.CustomerId;
 
-            return View(booking); // Trả về lại view với thông tin đã nhập
+            return View(booking);
         }
 
+
+
+        [HttpGet]
+        public JsonResult CheckAvailability(int fieldId, DateTime bookingTime, int duration)
+        {
+            var existingBookings = _context.Bookings
+                .Where(b => b.FieldId == fieldId)
+                .ToList();
+
+            var newBookingEndTime = bookingTime.AddHours(duration);
+
+            var isOverlap = existingBookings.Any(b =>
+            {
+                var existingBookingEndTime = b.BookingTime.AddHours(b.Duration ?? 0)
+;
+                return (bookingTime < existingBookingEndTime && newBookingEndTime > b.BookingTime);
+            });
+
+            return Json(new { isOverlap });
+        }
 
 
         // GET: Bookings/Edit/5
@@ -179,6 +214,30 @@ namespace FootballFieldManagement.Controllers
             {
                 try
                 {
+                    // Tính toán lại tổng giá trị sau khi chỉnh sửa
+                    var fieldDetails = await _context.Fields.FindAsync(booking.FieldId);
+                    if (fieldDetails != null)
+                    {
+                        // Cập nhật TotalPrice theo giá sân và thời gian
+                        booking.TotalPrice = fieldDetails.Price * booking.Duration;
+
+                        // Cập nhật TotalServicePrice nếu có thay đổi dịch vụ
+                        var totalServicePrice = _context.BookingServices
+                            .Where(bs => bs.BookingId == booking.BookingId)  // Lọc các dịch vụ liên quan đến booking này
+                            .Sum(bs => bs.TotalPrice);  // Cộng tất cả giá dịch vụ
+
+                        booking.TotalServicePrice = totalServicePrice;
+
+                        // Cập nhật TotalAmount (tổng giá trị của booking)
+                        booking.TotalAmount = booking.TotalPrice + booking.TotalServicePrice;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Không tìm thấy thông tin sân.");
+                        return View(booking);
+                    }
+
+                    // Cập nhật booking vào cơ sở dữ liệu
                     _context.Update(booking);
                     await _context.SaveChangesAsync();
                 }
@@ -195,10 +254,13 @@ namespace FootballFieldManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Lấy thông tin khách hàng và sân để hiển thị lại trong View
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", booking.CustomerId);
             ViewData["FieldId"] = new SelectList(_context.Fields, "FieldId", "FieldId", booking.FieldId);
             return View(booking);
         }
+
 
         // GET: Bookings/Delete/5
         public async Task<IActionResult> Delete(int? id)

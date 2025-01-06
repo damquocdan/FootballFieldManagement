@@ -1,37 +1,90 @@
 ﻿@model FootballFieldManagement.Models.Admin
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết quản trị viên";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        color: #2f8e2b; /* Màu xanh lá cây cho tiêu đề phụ */
+    }
+
+    .col-sm-2 {
+        color: #2f8e2b; /* Màu xanh lá cây cho nhãn */
+        font-weight: bold;
+    }
+
+    .col-sm-10 {
+        color: #333; /* Màu chữ đen cho thông tin */
+    }
+
+    .btn-back {
+        color: #2f8e2b;
+        text-decoration: none;
+        margin-top: 15px;
+        display: inline-block;
+    }
+
+        .btn-back:hover {
+            color: #f39c12;
+        }
+
+    .btn-edit {
+        color: #2f8e2b;
+        text-decoration: none;
+    }
+
+        .btn-edit:hover {
+            color: #f39c12;
+        }
+</style>
+
+<h1>Chi tiết quản trị viên</h1>
 
 <div>
-    <h4>Admin</h4>
+    <h4>Thông tin quản trị viên</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Username)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Username)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Password)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Password)
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.AdminId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model?.AdminId">Chỉnh sửa</a>
+    <a class="btn-back" asp-action="Index">Quay lại danh sách</a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

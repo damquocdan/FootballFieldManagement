@@ -1,37 +1,82 @@
 ﻿@model FootballFieldManagement.Models.Service
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi Tiết Dịch Vụ";
     Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        background-color: #f0f8ff; /* Màu nền nhẹ */
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        color: #2f8e2b; /* Màu xanh lá cây bóng đá */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        color: #2f8e2b; /* Màu xanh lá cây cho nhãn */
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        background-color: #ffffff;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #2f8e2b;
+            color: white;
+        }
+
+    .back-link {
+        color: #2f8e2b;
+        text-decoration: none;
+    }
+
+        .back-link:hover {
+            color: #228c22;
+        }
+</style>
+
+<h1>Chi Tiết Dịch Vụ</h1>
 
 <div>
-    <h4>Service</h4>
+    <h4>Dịch Vụ</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ServiceName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ServiceName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Price)
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ServiceId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="back-link" asp-action="Edit" asp-route-id="@Model?.ServiceId">Chỉnh Sửa</a> 
+    <a class="back-link" asp-action="Index">Quay Lại Danh Sách</a>
 </div>
