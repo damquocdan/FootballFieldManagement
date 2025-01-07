@@ -22,9 +22,14 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
         // GET: AdminManagement/Bookings
         public async Task<IActionResult> Index()
         {
-            var footballFieldManagementContext = _context.Bookings.Include(b => b.Customer).Include(b => b.Field);
+            var footballFieldManagementContext = _context.Bookings
+                .Include(b => b.Customer)
+                .Include(b => b.Field)
+                .OrderByDescending(b => b.BookingId); // Replace BookingDate with the actual property name
+
             return View(await footballFieldManagementContext.ToListAsync());
         }
+
 
         // GET: AdminManagement/Bookings/Details/5
         public async Task<IActionResult> Details(int? id)

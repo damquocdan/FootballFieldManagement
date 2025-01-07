@@ -22,16 +22,17 @@ namespace FootballFieldManagement.Areas.AdminManagement.Controllers
         // GET: AdminManagement/BookingServices
         public async Task<IActionResult> Index()
         {
-            // Bao gồm cả Booking và Customer để tránh null
             var footballFieldManagementContext = _context.BookingServices
-                .Include(b => b.Booking)  // Bao gồm thông tin Booking
-                .ThenInclude(b => b.Customer) // Bao gồm thông tin Customer trong Booking
-                .Include(b => b.Service);  // Bao gồm thông tin Service
+                .Include(b => b.Booking)  // Include Booking information
+                .ThenInclude(b => b.Customer) // Include Customer information in Booking
+                .Include(b => b.Service)  // Include Service information
+                .OrderByDescending(b => b.BookingServiceId); // Replace 'BookingDate' with your actual date property
 
             var bookingServices = await footballFieldManagementContext.ToListAsync();
 
             return View(bookingServices);
         }
+
 
 
 

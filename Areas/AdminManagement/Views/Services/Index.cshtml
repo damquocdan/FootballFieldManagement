@@ -94,7 +94,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @String.Format("{0:N0}", item.Price) VND
                 </td>
                 <td class="action-links">
                     <a asp-action="Edit" asp-route-id="@item.ServiceId">Sửa</a> 

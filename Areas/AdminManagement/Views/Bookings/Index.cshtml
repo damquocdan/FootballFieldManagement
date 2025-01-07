@@ -110,14 +110,16 @@
                     @Html.DisplayFor(modelItem => item.Duration)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                    @String.Format("{0:N0}", item.TotalPrice) VND
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalServicePrice)
+                    @String.Format("{0:N0}", item.TotalServicePrice) VND
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                    @String.Format("{0:N0}", item.TotalAmount) VND
                 </td>
+
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Customer.Username)
                 </td>
