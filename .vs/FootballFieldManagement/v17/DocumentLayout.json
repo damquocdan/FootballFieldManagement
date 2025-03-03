@@ -1,0 +1,293 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\DATN\\FootballFieldManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\views\\fields\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:views\\fields\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\views\\fields\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\views\\fields\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:views\\bookings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\controllers\\bookingservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\controllers\\bookingservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\views\\bookings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\areas\\adminmanagement\\views\\bookingservices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:areas\\adminmanagement\\views\\bookingservices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\controllers\\loginccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:controllers\\loginccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\views\\loginc\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:views\\loginc\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\models\u200B\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:models\u200B\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|e:\\datn\\footballfieldmanagement\\controllers\\fieldscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41840810-6697-4819-B365-DC6051F7EA4F}|FootballFieldManagement.csproj|solutionrelative:controllers\\fieldscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 871,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-08T08:46:53.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookingServicesController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\BookingServicesController.cs",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Controllers\\BookingServicesController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\BookingServicesController.cs",
+              "RelativeToolTip": "Areas\\AdminManagement\\Controllers\\BookingServicesController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T09:21:59.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Fields\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Views\\Fields\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Fields\\Index.cshtml",
+              "RelativeToolTip": "Areas\\AdminManagement\\Views\\Fields\\Index.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAFgAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:16:36.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\BookingServices\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Views\\BookingServices\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\BookingServices\\Index.cshtml",
+              "RelativeToolTip": "Areas\\AdminManagement\\Views\\BookingServices\\Index.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAwwFgAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:15:18.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Bookings\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Views\\Bookings\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Bookings\\Index.cshtml",
+              "RelativeToolTip": "Areas\\AdminManagement\\Views\\Bookings\\Index.cshtml",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAHAAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:12:37.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginCController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Controllers\\LoginCController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginCController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Controllers\\LoginCController.cs",
+              "RelativeToolTip": "Controllers\\LoginCController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCAAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T09:03:08.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingsController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Controllers\\BookingsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingsController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Controllers\\BookingsController.cs",
+              "RelativeToolTip": "Controllers\\BookingsController.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAQwEIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T07:51:27.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Controllers\\ServicesController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "Areas\\AdminManagement\\Controllers\\ServicesController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T09:21:38.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Views\\LoginC\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\LoginC\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Views\\LoginC\\Index.cshtml",
+              "RelativeToolTip": "Views\\LoginC\\Index.cshtml",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:02:59.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Views\\Fields\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Fields\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Views\\Fields\\Index.cshtml",
+              "RelativeToolTip": "Views\\Fields\\Index.cshtml",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJIAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T07:12:21.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Views\\Bookings\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bookings\\Create.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Views\\Bookings\\Create.cshtml",
+              "RelativeToolTip": "Views\\Bookings\\Create.cshtml",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAB4AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T07:47:42.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Services\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Views\\Services\\Index.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Views\\Services\\Index.cshtml",
+              "RelativeToolTip": "Areas\\AdminManagement\\Views\\Services\\Index.cshtml",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAGAAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:17:04.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookingsController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\BookingsController.cs",
+              "RelativeDocumentMoniker": "Areas\\AdminManagement\\Controllers\\BookingsController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Areas\\AdminManagement\\Controllers\\BookingsController.cs",
+              "RelativeToolTip": "Areas\\AdminManagement\\Controllers\\BookingsController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T09:20:54.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAAAKQAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-07T09:01:48.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FieldsController.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Controllers\\FieldsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FieldsController.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Controllers\\FieldsController.cs",
+              "RelativeToolTip": "Controllers\\FieldsController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBcAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T07:32:38.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "E:\\DATN\\FootballFieldManagement\\Models\u200B\\Booking.cs",
+              "RelativeDocumentMoniker": "Models\u200B\\Booking.cs",
+              "ToolTip": "E:\\DATN\\FootballFieldManagement\\Models\u200B\\Booking.cs",
+              "RelativeToolTip": "Models\u200B\\Booking.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T07:24:28.331Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
